@@ -1,0 +1,872 @@
+@import url('https://fonts.googleapis.com/css2?family=Charmonman:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 19px;
+    font-family: 'Kaushan Script';    
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+}
+.container{
+    margin: 1 auto;
+    min-height: 100vh;
+    width: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.brand h1{
+    font-size: 1rem;
+    color: white;
+}
+.brand h1 span{
+    color: black;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(39, 32, 32, 0.541);
+   color: white;
+}
+.brand-title{
+    font-size:2.1rem;
+    font-family: 'Kaushan Script' ;
+    margin: .5rem;
+}
+.brand-title span{
+    color: black;
+}
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navbar-links li{
+    list-style: none;
+}
+.navbar-links li a{
+    font-family: 'Montserrat';
+    font-size: .9em;
+    text-decoration: none;
+    color: whitesmoke;
+    padding: .7rem;
+    display: block;
+  
+}
+.navbar-links li:hover{
+    background-color: black;
+}
+.toggle-button {
+    position: absolute;
+    top : .75rem;
+    right: 1rem;
+    display:none;
+    flex-direction: column;
+    justify-content: space-between;
+    width : 25px;
+    height: 21px;
+}
+.toggle-button .bar{
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width:800px){
+    .toggle-button{
+        display:flex;
+    }
+
+    .navbar-links{
+       display: none;
+     width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links li{
+        text-align: center;
+    }
+
+    .navbar-links li a{
+        padding: .5rem .5rem;
+    }
+
+    .navbar-links.active{
+        
+        display: flex;
+    }
+}
+/*Header section
+#header{
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+}
+#header .header{
+    min-height: 5vh;
+    background: rgba(31, 30, 30, 0.24);
+    font-family:'Montserrat' ;
+    transition: 0.3s ease background-color;
+  
+}
+#header .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1100px;
+    padding:  9px;
+    margin: auto;
+  
+}
+
+#header .nav-list ul{
+   
+    list-style: none;
+    position: absolute;
+    background-color: rgb(31, 30, 30);
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.5s ease left;
+}
+#header .nav-list ul.active{
+    left: 0%;
+}
+#header .nav-bar .brand a{
+    font-size: 40px;
+    font-weight: 600;
+}
+#header .nav-list ul a{
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+#header .nav-list ul a::after{
+    content: attr(data-after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%) scale(0) ;
+    color: rgba(240, 248, 255, 0.021);
+    font-size: .2rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: .3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after{
+    transform:translate(-50%,-50%) scale(1);
+    letter-spacing: initial;
+}
+#header .nav-list ul li:hover a{
+    color: yellow;
+}
+#header .hamburger{
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    transform: scale(0.6);
+    margin-right:10px;
+}
+#header .hamburger:after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+    animation: hamburger_puls 1s ease infinite ;
+}
+#header .hamburger .bar{
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: white;
+    z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+
+}
+#header .hamburger .bar::after{
+    top:8px;
+}
+#header .hamburger .bar::before{
+    bottom:8px;
+}
+#header .hamburger.active .bar::before{
+    bottom: 0;
+}
+#header .hamburger.active .bar::after{
+    top: 0;
+}*/
+/*End pof Header section*/
+
+/*Hero Section*/
+#Hero {
+    background-image: url(./img/travel_img1.png);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 5;
+    height: 100vh ;
+    width: 100%;
+}
+#Hero::after{
+    content:'';
+    position: absolute;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    background-color:grey;
+    opacity: .6;
+    z-index: -1;
+}
+
+#Hero h1{
+    display: block;
+    width: fit-content;
+    font-size: 2rem;
+    position: relative;
+    color:transparent;
+    animation: text_reveal .5s ease forwards;
+    animation-delay: 1s;
+
+}
+#Hero h1:nth-child(1){
+    animation-delay: 1s;
+}
+#Hero h1:nth-child(2){
+    animation: text_reveal_name .5s ease forwards;
+    animation-delay: 2s;
+}
+#Hero h1:nth-child(3){
+    animation-delay: 3s;
+}
+#Hero h1 span{
+   display: inline-flexbox;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:90%;
+    width: 110%;
+    background-color:gray;
+    animation: text_reveal_box 1s ease forwards;
+    animation-delay: .5s ;
+}
+#Hero h1:nth-child(1) span{
+    animation-delay: .5s;
+}
+#Hero h1:nth-child(2) span{
+    animation-delay: 1.5s;
+}
+#Hero h1:nth-child(3) span{
+    animation-delay: 2.5s;
+}
+#Hero .cta{
+    font-size: 1rem;
+    display: inline-block;
+    padding: 10px 30px;
+    color:black;
+    background-color: transparent;
+    border: 2px solid blanchedalmond;
+    font-family: 'Montserrat',sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    margin-top: 20px;
+    z-index: 1;
+    transition: .4s ease;
+    transition-property:  background-color,color;
+}
+#Hero .cta:hover{
+        color:black;
+    background-color: cornsilk;
+    
+}
+/*End of Hero Section*/
+
+
+/*instafeed section*/
+#instafeed{ 
+    background-color: black;   
+}
+#instafeed .instafeed{
+    font-family:'Kaushan Script';
+    flex-direction: column;
+    text-align: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 100px 0;
+    background-color: black;
+    color: white;
+    letter-spacing: .2rem;
+}
+#instafeed .section-title{
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 10px;    
+}
+#instafeed .instafeed-top p{
+    font-family: 'Dancing Script';
+    font-size: 1.4rem;
+    margin-top:5px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+    color: darkgoldenrod;
+}
+
+#instafeed .instafeed-item1{
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 1px;
+    background-size: cover;
+    margin: 10px 2%;
+    overflow: hidden;
+}
+#instafeed .instafeed-item1 .overlay{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color:rgba(31,30,30,0.24);
+}
+#instafeed .instafeed-item1:hover .overlay{
+   opacity: 1;
+}
+#instafeed .instafeed-item1 .icon{
+    color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+#instafeed .instafeed-item2{
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 1px;
+    background-size: cover;
+    margin: 10px 2%;
+    overflow: hidden;
+}
+#instafeed .instafeed-item2 .overlay{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color:rgba(31,30,30,0.24);
+}
+
+#instafeed .instafeed-item2:hover .overlay{
+    opacity: 1;
+ }
+#instafeed .instafeed-item2 .icon{
+    color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+#instafeed .instafeed-item3{
+   position: relative;
+    width: 100%;
+    max-width: 400px;
+    flex-basis: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 1px;
+    background-size: cover;
+    margin: 10px 2%;
+    overflow: hidden;
+}
+#instafeed .instafeed-item3 .overlay{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .3s ease;
+  background-color:rgba(31,30,30,0.24);
+}
+#instafeed .instafeed-item3:hover .overlay{
+    opacity: 1;
+ }
+ #instafeed .instafeed-item3 .icon{
+    color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+/*End of instafeed section*/
+
+/*About section*/
+#about{
+    background-color: gray;
+}
+#about .about{
+    flex-direction: column-reverse;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    
+}
+#about .col-left{
+    width:230px;
+    height:350px;
+}
+#about .col-right{
+    width: 100%;
+    font-family: 'Kaushan Script';
+   
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	margin-bottom: 10px;
+}
+#about .col-right p{
+    font-family: 'Dancing Script' ; 
+    margin-bottom: 20px;
+   
+   
+    color: honeydew;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img{
+    position: relative;
+    width:100%;
+    height:100%;
+    border: 10px solid white;
+}
+#about .col-left .about-img::after {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 19px;
+    height:100%;
+    width: 100%;
+    border:0px solid black;
+    z-index: -1;
+}
+/*End of About section */
+
+/*Contact section*/
+#contact .contact{
+    flex-direction: column;
+    max-width: 1000px;
+    margin:0 auto; 
+}
+#contact .contact-item .btn{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+#contact .contact-item .btn:hover{
+    background-color: black;
+}
+#contact .section-title{
+    font-family: 'Kaushan Script',sans-serif;
+}
+#contact .contact-items{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 30px;
+}
+#contact .contact-item{
+    width: 80%;
+    padding: 20px;
+    font-size: 13px;
+    font-family: 'Dancing Script',sans-serif;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    padding:5px;
+    margin:30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 18px 0 black;
+    transition: .3s ease box-shadow;
+}
+#contact .contact-item:hover{
+    box-shadow: 0px 0px 5px 0 black;
+}
+#contact .icon{
+    width: 70px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+#contact .contact-info h1{
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-family: 'Dancing Script',sans-serif;
+}
+#coantact .contact-info h2{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 500;
+}
+/*End of Contact section*/
+
+/*Footer*/
+#footer{
+    background-image: linear-gradient(60deg,#29323c 0%,#485563 100%);
+}
+#footer .footer{
+    min-height: 50px;
+    flex-direction: column;
+    padding-top: 15px;
+    padding-bottom:5px;
+    
+}
+#footer .brand h1{
+    font-size: 1.1rem;
+    letter-spacing: .2rem;
+    justify-items: center;
+    text-align: center;
+}
+#footer .footer h1{
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+   display: flex;
+    font-family: 'Kaushan Script';
+    width: 100%;
+    letter-spacing: .1rem;
+}
+#footer .footer p{
+     font-family: 'Dancing Script';
+     display:block;
+    font-size: 1.4rem;
+    margin-top:5px;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    line-height: 2.5rem;
+    text-align: center;
+    justify-content: center;
+    color: darkgoldenrod;
+    
+}
+#footer .social-icon{
+    display:flex;
+    margin-bottom: 30px;
+    padding-bottom: 40px;
+}
+#footer .social-item{
+   height: 70px;
+   width: 120px;
+    margin: 0 7px;
+    padding-bottom: 25px;
+}
+#footer .social-item img{
+    filter: grayscale(1);
+    transition: .3s ease ;
+}
+#footer .social-item:hover img{
+    filter: grayscale(0);
+    box-shadow:  0px 0px 5px 0 whitesmoke;
+}
+/*End of Footer section*/
+
+/*Copyrights section*/
+#base{
+    font-family: 'Dancing Script' ;
+}
+#base .base{
+    color: ivory;
+    font-size: 1rem;
+    padding-top: 2px;
+    padding-bottom:2px;
+    background-color: grey;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+/*End of Copyrights section*/
+/*keyframes*/
+@keyframes hamburger_puls{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(1.4);
+    }   
+}
+@keyframes text_reveal_box{
+    50% {
+        width:100%;
+        left:0;
+    }
+    100% {
+        width : 0;
+        left : 100%;
+    }
+}
+@keyframes text_reveal{
+    100%{
+        color:whitesmoke;
+    }
+}
+@keyframes text_reveal_name{
+    100%{
+        color:black;
+        font-weight: 500px;
+    }
+}
+/*End of keyframes*/
+
+/*Media query for tablet*/
+@media only screen and (max-width:450px){
+    .cta{
+        font-size: 2rem;
+        padding: 20px 60px;
+    }
+    h1.section-title{
+        font-size: 4rem;
+    }
+}
+
+/*Hero*/    
+#hero h1{
+    font-size: 5rem;
+}
+/*End of Hero*/
+
+/*Instafeed section*/
+#instafeed .instafeed{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#instafeed .instafeed-bottom .instafeed-item1{
+    flex-basis: 45%;
+    margin:2.5%;
+}
+#instafeed .instafeed-bottom .instafeed-item2{
+    flex-basis: 45%;
+    margin:2.5%;
+}
+#instafeed .instafeed-bottom .instafeed-item3{
+    flex-basis: 45%;
+    margin:2.5%;
+}
+/*End of Instafeed section*/
+
+/*About*/
+#about .about {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+#about  .col-left{
+    width: 300px;
+    height: 270px;
+    padding-left: 20px;  
+}
+#about .about .col-left .about-img::after {
+    left: -45px;
+    top: 34px;
+    height: 98%;
+    width: 98%;
+    border: 10px solid black;
+}
+#about  .col-right{
+    padding: 25px;
+    text-align: left;
+}
+#about .col-rigt h1{
+    text-align: center;   
+}
+/*End of About*/
+
+/*Contact section*/
+#contact .contact{
+    flex-direction: column;
+    padding: 100px 0;
+    align-items:center;
+    justify-content: center;
+    min-width: 20vh;
+   
+}
+#contact .contact-items{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+}
+#contact .contact-item{
+    width: 60%;
+    flex-direction: row;
+    margin:10px;
+}
+#contact .contact-item .icon{
+    width:100px;
+    height:100px;
+}
+#contact .contact-item .icon img{
+    object-fit:contain ;
+}
+#contact .contact-item .contact-info{
+    width:100%;
+    text-align: left;
+    padding-left: 20px;
+}
+/*End of Contact section*/
+
+/*Footer section*/
+#footer .footer {
+    width: 100%;
+    display: flex;
+}
+#footer .footer .icon{
+    width: 100%;
+    display: flex;
+}
+/*End of Footer section*/
+
+/*End of Media query for tablet*/
+
+/*Media query for Desktop*/
+@media only screen  and (min-width:630px){
+    /*Header*/
+ #header .hamburger{
+    display: none;
+ }
+ #header .nav-list ul{
+    position: initial;
+    display: block;
+    height: auto;
+    width: fit-content;
+    background-color: transparent;
+ }
+ #header .nav-list ul li{
+    display: inline-block;
+ }
+ #header .nav-list ul li a{
+    font-size: 1rem;
+ }
+ #header .nav-list ul a:after{
+    display: none;
+ }
+ /*End of Header*/
+
+}
+/*End of media query for Desktop*/
